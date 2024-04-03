@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package api.efwrapper.v1;
+option go_package="api/efwrapper/v1;efwrapperv1";
+
+import "networking/v1alpha3/envoy_filter.proto";
+
+message Patch {
+  string name = 1;
+  string namespace = 2;
+  istio.networking.v1alpha3.EnvoyFilter envoyFilter = 3;
+}
+
+message Configuration {
+  string name = 1;
+  repeated Patch patches = 2;
+}
